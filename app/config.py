@@ -31,7 +31,7 @@ class Settings(BaseSettings):
 
     # API Server Configuration
     api_host: str = "0.0.0.0"  # nosec
-    api_port: int = 8010
+    api_port: int = 8011
 
     practool_host: Optional[str] = None
     practool_port: Optional[int] = None
