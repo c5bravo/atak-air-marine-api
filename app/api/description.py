@@ -50,18 +50,18 @@ async def return_product_description(language: str) -> ProductDescription:
     LOGGER.debug("Got language: {}".format(language))
     if language == "fi":
         return ProductDescription(
-            shortname="airguardian",
-            title="Airguardian",
+            shortname="airmarine",
+            title="Air&Marine",
             icon=None,
-            description=""""Airguardian""",
+            description=""""Air&Marine""",
             language="fi",
         )
     if language == "en":
         return ProductDescription(
-            shortname="airguardian",
-            title="Airguardian",
+            shortname="air&marine",
+            title="AirguAir&Marineardian",
             icon=None,
-            description="Airguardian",
+            description="Air&Marine",
             language="en",
         )
     # NOTE: Generally should return just the default language but this is for testing purposes
@@ -74,14 +74,14 @@ async def return_product_description(language: str) -> ProductDescription:
 )
 async def return_product_description_extended(language: str) -> ProductDescriptionExtended:
     """Fetch description from each product in manifest"""
-    shortname = "airguardian"
+    shortname = "airmarine"
 
     if language == "fi":
         return ProductDescriptionExtended(
             shortname=shortname,
-            title="Airguardian harjoitustyökalu",
+            title="Air&Marine",
             icon=None,
-            description="Ilmavalvonta harjoitus datan luonti",
+            description="Air&Marine asetukset",
             language=language,
             docs="NA",
             component=ProductComponent(type="link", ref=read_ag_uri()),
@@ -89,18 +89,18 @@ async def return_product_description_extended(language: str) -> ProductDescripti
     if language == "sv":
         return ProductDescriptionExtended(
             shortname=shortname,
-            title="Airguardian träningsverktyg",
+            title="Air&Marine",
             icon=None,
-            description="Skapande av data för luftövervakningsövningar",
+            description="Air&Marine",
             language=language,
             docs="NA",
             component=ProductComponent(type="link", ref=read_ag_uri()),
         )
     return ProductDescriptionExtended(
         shortname=shortname,
-        title="Airguardian practice tool",
+        title="Air&Marine",
         icon=None,
-        description="Create practice data for air surveillance",
+        description="Air&Marine settings",
         language=language,
         docs="NA",
         component=ProductComponent(type="link", ref=read_ag_uri()),
