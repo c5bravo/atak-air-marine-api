@@ -6,7 +6,6 @@ import logging
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from libpvarki.schemas.product import ProductDescription
-from app.config import read_ag_uri
 
 
 LOGGER = logging.getLogger(__name__)
@@ -84,7 +83,7 @@ async def return_product_description_extended(language: str) -> ProductDescripti
             description="Air&Marine asetukset",
             language=language,
             docs="NA",
-            component=ProductComponent(type="link", ref=read_ag_uri()),
+            component=ProductComponent(type="link", ref="google.com"),
         )
     if language == "sv":
         return ProductDescriptionExtended(
@@ -94,7 +93,7 @@ async def return_product_description_extended(language: str) -> ProductDescripti
             description="Air&Marine",
             language=language,
             docs="NA",
-            component=ProductComponent(type="link", ref=read_ag_uri()),
+            component=ProductComponent(type="link", ref="google.com"),
         )
     return ProductDescriptionExtended(
         shortname=shortname,
@@ -103,5 +102,5 @@ async def return_product_description_extended(language: str) -> ProductDescripti
         description="Air&Marine settings",
         language=language,
         docs="NA",
-        component=ProductComponent(type="link", ref=read_ag_uri()),
+        component=ProductComponent(type="link", ref="google.com"),
     )
