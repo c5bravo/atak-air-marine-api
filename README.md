@@ -33,7 +33,7 @@ Data API  →  Filter "Finland" → Transform to MGRS  → FastAPI
 
 ```bash
 git clone <repo-url>
-cd atak-airguardian-api
+cd atak-air-marine-api
 ```
 
 #### 2. Configure environment

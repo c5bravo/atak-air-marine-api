@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "airguard-api"
+name = "airmarine"
 version = "0.1.0"
 description = "Finland Aircraft Tracker API with mTLS support"
 authors = ["Eagle <eagle@example.com>"]

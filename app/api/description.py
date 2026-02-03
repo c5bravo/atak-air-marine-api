@@ -58,7 +58,7 @@ async def return_product_description(language: str) -> ProductDescription:
     if language == "en":
         return ProductDescription(
             shortname="air&marine",
-            title="AirguAir&Marineardian",
+            title="Air&Marineardian",
             icon=None,
             description="Air&Marine",
             language="en",
