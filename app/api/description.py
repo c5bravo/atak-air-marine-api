@@ -83,7 +83,7 @@ async def return_product_description_extended(language: str) -> ProductDescripti
             description="Air&Marine asetukset",
             language=language,
             docs="NA",
-            component=ProductComponent(type="link", ref="google.com"),
+            component=ProductComponent(type="component", ref="/ui/{shortname}/remoteEntry.js"),
         )
     if language == "sv":
         return ProductDescriptionExtended(
@@ -93,7 +93,7 @@ async def return_product_description_extended(language: str) -> ProductDescripti
             description="Air&Marine",
             language=language,
             docs="NA",
-            component=ProductComponent(type="link", ref="google.com"),
+            component=ProductComponent(type="component", ref="/ui/{shortname}/remoteEntry.js"),
         )
     return ProductDescriptionExtended(
         shortname=shortname,
@@ -102,5 +102,5 @@ async def return_product_description_extended(language: str) -> ProductDescripti
         description="Air&Marine settings",
         language=language,
         docs="NA",
-        component=ProductComponent(type="link", ref="google.com"),
+        component=ProductComponent(type="component", ref="/ui/{shortname}/remoteEntry.js"),
     )

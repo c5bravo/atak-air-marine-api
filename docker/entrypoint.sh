@@ -2,6 +2,14 @@
 # shellcheck disable=SC1091
 . /container-init.sh
 
+mkdir -p /ui_files/airmarine
+if [ -d "/ui_build" ]; then
+    echo "Copying UI files from /ui_build → /ui_files/airmarine ..."
+    cp -r /ui_build/* /ui_files/airmarine/
+else
+    echo "No UI found at /ui_build, skipping copy."
+fi
+
 set -e
 if [ "$#" -eq 0 ]; then
   # FIXME: can we know the traefik/nginx internal docker ip easily ?

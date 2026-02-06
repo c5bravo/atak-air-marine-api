@@ -54,6 +54,10 @@ RUN apt-get update && apt-get install -y \
     && echo 'export PATH="/root/.local/bin:$PATH"' >>/root/.profile \
     && export PATH="/root/.local/bin:$PATH" \
     && true
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && corepack enable \
+    && corepack prepare pnpm@latest --activate
 SHELL ["/bin/bash", "-lc"]
 # Copy only requirements, to cache them in docker layer:
 WORKDIR /pysetup
@@ -76,6 +80,13 @@ FROM builder_base as production_build
 COPY ./docker/entrypoint.sh /docker-entrypoint.sh
 COPY ./docker/container-init.sh /container-init.sh
 # Only files needed by production setup
+COPY ./ui /ui/
+
+WORKDIR /ui
+RUN CI=true pnpm install && pnpm build
+RUN mkdir -p /ui_build && cp -r dist/* /ui_build/
+
+WORKDIR /pysetup
 COPY . .
 
 # Build the wheel package with poetry and add it to the wheelhouse
@@ -92,6 +103,7 @@ RUN --mount=type=ssh source /.venv/bin/activate \
 FROM python:3.12-slim-bookworm as production
 COPY --from=production_build /tmp/wheelhouse /tmp/wheelhouse
 COPY --from=production_build /docker-entrypoint.sh /docker-entrypoint.sh
+COPY --from=production_build /ui_build /ui_build
 COPY --from=production_build /container-init.sh /container-init.sh
 COPY --from=pvarki/kw_product_init:latest /kw_product_init /kw_product_init
 # Install system level deps for running the package (not devel versions for building wheels)
