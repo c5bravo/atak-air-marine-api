@@ -90,7 +90,7 @@ def transform_aircraft(aircraft: Dict[str, Any]) -> TransformedAircraft:
 
     transformed: TransformedAircraft = {
         "id": 0,
-        "aircraftId": aircraft.get("callsign"),
+        "aircraftId": aircraft.get("callsign") or aircraft.get("icao24"),
         "position": convert_to_mgrs(aircraft.get("longitude"), aircraft.get("latitude")),
         "altitude": classify_altitude(aircraft.get("baro_altitude")),
         "speed": classify_speed(aircraft.get("velocity")),

@@ -36,7 +36,7 @@ class Settings(BaseSettings):
     practool_host: Optional[str] = None
     practool_port: Optional[int] = None
 
-    fin_marine_traffic_api_url: Optional[str] = None
+    fin_marine_traffic_api_url: Optional[str] = "https://meri.digitraffic.fi/api/ais/v1/locations"
 
 
 settings = Settings()
